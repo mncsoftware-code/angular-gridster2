@@ -8,8 +8,8 @@ export const GridsterConfigService: GridsterConfig = {
   // 'fixed' will set the rows and columns dimensions based on fixedColWidth and fixedRowHeight options
   // 'verticalFixed' will set the rows to fixedRowHeight and columns width will fit the space available
   // 'horizontalFixed' will set the columns to fixedColWidth and rows height will fit the space available
-  fixedColWidth: 250, // fixed col width for gridType: 'fixed'
-  fixedRowHeight: 250, // fixed row height for gridType: 'fixed'
+  fixedColWidth: 250, // fixed col width for gridType: 'fixed' and 'fixedFit'
+  fixedRowHeight: 250, // fixed row height for gridType: 'fixed' and 'fixedFit'
   keepFixedHeightInMobile: false, // keep the height from fixed gridType in mobile layout
   keepFixedWidthInMobile: false, // keep the width from fixed gridType in mobile layout
   setGridSize: false, // sets grid size depending on content

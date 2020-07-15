@@ -85,7 +85,9 @@ export class GridsterRenderer {
       removeClass1 = GridType.Fit;
       removeClass2 = GridType.ScrollVertical;
       removeClass3 = GridType.Fixed;
-    } else if (this.gridster.$options.gridType === GridType.Fixed) {
+    } else if (this.gridster.$options.gridType === GridType.Fixed ||
+        this.gridster.$options.gridType === GridType.FixedFit) {
+
       this.gridster.curColWidth = this.gridster.$options.fixedColWidth +
         (this.gridster.$options.ignoreMarginInRow ? 0 : this.gridster.$options.margin);
       this.gridster.curRowHeight = this.gridster.$options.fixedRowHeight +

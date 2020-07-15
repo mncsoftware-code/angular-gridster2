@@ -1,7 +1,7 @@
 import {GridsterComponentInterface} from './gridster.interface';
 import {GridsterItem, GridsterItemComponentInterface} from './gridsterItem.interface';
 
-export type gridTypes = 'fit' | 'scrollVertical' | 'scrollHorizontal' | 'fixed' | 'verticalFixed' | 'horizontalFixed';
+export type gridTypes = 'fit' | 'scrollVertical' | 'scrollHorizontal' | 'fixed' | 'verticalFixed' | 'horizontalFixed' | 'fixedFit';
 export type displayGrids = 'always' | 'onDrag&Resize' | 'none';
 export type compactTypes =
   'none'
@@ -19,7 +19,8 @@ export enum GridType {
   ScrollHorizontal = 'scrollHorizontal',
   Fixed = 'fixed',
   VerticalFixed = 'verticalFixed',
-  HorizontalFixed = 'horizontalFixed'
+  HorizontalFixed = 'horizontalFixed',
+  FixedFit = 'fixedFit'
 }
 
 export enum DisplayGrid {
