@@ -137,15 +137,6 @@ export class GridsterComponent implements OnInit, OnChanges, OnDestroy, Gridster
       width = this.el.clientWidth;
       height = this.el.clientHeight;
     }
-    if (this.$options.gridType === 'fixedFit') {
-      const margin = this.$options.ignoreMarginInRow ? 0 : this.$options.margin;
-      const rowGap = (height % this.curRowHeight) - margin;
-      const rowAdjustment = rowGap / this.gridRows.length;
-      const columnGap = (width % this.curColWidth) - margin;
-      const columnAdjustment = columnGap / this.gridColumns.length;
-      this.curRowHeight += rowAdjustment;
-      this.curColWidth += columnAdjustment;
-    }
     if ((width !== this.curWidth || height !== this.curHeight) && this.checkIfToResize()) {
       this.onResize();
     }

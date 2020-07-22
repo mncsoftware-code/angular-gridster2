@@ -85,9 +85,7 @@ export class GridsterRenderer {
       removeClass1 = GridType.Fit;
       removeClass2 = GridType.ScrollVertical;
       removeClass3 = GridType.Fixed;
-    } else if (this.gridster.$options.gridType === GridType.Fixed ||
-        this.gridster.$options.gridType === GridType.FixedFit) {
-
+    } else if (this.gridster.$options.gridType === GridType.Fixed) {
       this.gridster.curColWidth = this.gridster.$options.fixedColWidth +
         (this.gridster.$options.ignoreMarginInRow ? 0 : this.gridster.$options.margin);
       this.gridster.curRowHeight = this.gridster.$options.fixedRowHeight +
@@ -110,6 +108,20 @@ export class GridsterRenderer {
       removeClass1 = GridType.Fit;
       removeClass2 = GridType.ScrollVertical;
       removeClass3 = GridType.Fixed;
+    } else if (this.gridster.$options.gridType === GridType.FixedFit) {
+      const margin = this.gridster.$options.ignoreMarginInRow ? 0 : this.gridster.$options.margin;
+      this.gridster.curColWidth = this.gridster.$options.fixedColWidth + margin;
+      this.gridster.curRowHeight = this.gridster.$options.fixedRowHeight + margin;
+      const columnGap = (this.gridster.el.scrollWidth % this.gridster.curColWidth) - margin;
+      const columnAdjustment = columnGap / this.gridster.gridColumns.length;
+      const rowGap = (this.gridster.el.scrollHeight % this.gridster.curRowHeight) - margin;
+      const rowAdjustment = rowGap / this.gridster.gridRows.length;
+      this.gridster.curColWidth += columnAdjustment;
+      this.gridster.curRowHeight += rowAdjustment;
+      addClass = GridType.Fixed;
+      removeClass1 = GridType.Fit;
+      removeClass2 = GridType.ScrollVertical;
+      removeClass3 = GridType.ScrollHorizontal;
     }
 
     if (this.gridster.mobile) {
