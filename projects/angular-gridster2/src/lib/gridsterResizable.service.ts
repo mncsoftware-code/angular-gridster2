@@ -193,6 +193,9 @@ export class GridsterResizable {
 
     this.lastMouse.clientX = e.clientX;
     this.lastMouse.clientY = e.clientY;
+    if (this.gridster.options.itemResizingCallback) {
+      this.gridster.options.itemResizingCallback(this.gridsterItem, e, this.resizeEventScrollType);
+    }
     this.zone.run(() => {
       this.gridster.updateGrid();
     });
@@ -210,6 +213,7 @@ export class GridsterResizable {
     this.touchend();
     this.touchcancel();
     this.gridster.dragInProgress = false;
+    this.resizeEventScrollType = { w: false, e: false, n: false, s: false };
     this.gridster.updateGrid();
     if (this.gridster.options.resizable && this.gridster.options.resizable.stop) {
       Promise.resolve(this.gridster.options.resizable.stop(this.gridsterItem.item, this.gridsterItem, e))

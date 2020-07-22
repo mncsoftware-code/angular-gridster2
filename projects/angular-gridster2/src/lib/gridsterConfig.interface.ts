@@ -1,5 +1,6 @@
 import {GridsterComponentInterface} from './gridster.interface';
 import {GridsterItem, GridsterItemComponentInterface} from './gridsterItem.interface';
+import { GridsterResizeEventType } from './gridsterResizeEventType.interface';
 
 export type gridTypes = 'fit' | 'scrollVertical' | 'scrollHorizontal' | 'fixed' | 'verticalFixed' | 'horizontalFixed' | 'fixedFit';
 export type displayGrids = 'always' | 'onDrag&Resize' | 'none';
@@ -86,6 +87,7 @@ export interface GridsterConfig {
   destroyCallback?: (gridster: GridsterComponentInterface) => void;
   gridSizeChangedCallback?: (gridster: GridsterComponentInterface) => void;
   itemChangeCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
+  itemResizingCallback?: (itemComponent: GridsterItemComponentInterface, event: MouseEvent, resizeEventScrollType: GridsterResizeEventType) => void;
   itemResizeCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
   itemInitCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
   itemRemovedCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
