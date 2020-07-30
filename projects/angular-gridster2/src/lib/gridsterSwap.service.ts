@@ -69,6 +69,9 @@ export class GridsterSwap {
     } else {
       gridsterItemCollision = this.gridster.checkCollision(pushedBy.$item);
     }
+    if (gridsterItemCollision && gridsterItemCollision.item.internalMovingOnly) {
+      return;
+    }
     if (gridsterItemCollision && gridsterItemCollision !== true && gridsterItemCollision.canBeDragged()) {
       const gridsterItemCollide: GridsterItemComponentInterface = gridsterItemCollision;
       const copyCollisionX = gridsterItemCollide.$item.x;

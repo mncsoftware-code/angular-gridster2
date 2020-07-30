@@ -363,6 +363,9 @@ export class GridsterComponent implements OnInit, OnChanges, OnDestroy, Gridster
         this.autoPositionItem(itemComponent);
       } else {
         itemComponent.notPlaced = true;
+        if (this.options.itemCantFitCallback) {
+          this.options.itemCantFitCallback(itemComponent);
+        }
       }
     }
     this.grid.push(itemComponent);
@@ -448,6 +451,9 @@ export class GridsterComponent implements OnInit, OnChanges, OnDestroy, Gridster
       if (!this.$options.disableWarnings) {
         console.warn('Can\'t be placed in the bounds of the dashboard!/n' +
           JSON.stringify(itemComponent.item, ['cols', 'rows', 'x', 'y']));
+      }
+      if (this.options.itemCantFitCallback) {
+        this.options.itemCantFitCallback(itemComponent);
       }
     }
   }

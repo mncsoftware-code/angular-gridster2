@@ -44,7 +44,14 @@ export const GridsterConfigService: GridsterConfig = {
   destroyCallback: undefined, // callback to call after grid has destroyed. Arguments: gridsterComponent
   gridSizeChangedCallback: undefined, // callback to call after grid has changed size. Arguments: gridsterComponent
   itemChangeCallback: undefined,  // callback to call for each item when is changes x, y, rows, cols.
+  // Arguments: gridsterItemComponent
+  itemCantFitCallback: undefined, // callback to call when an item to add can not fit in the grid
+  // Arguments: gridsterItemComponent, event, resizeEventScrollType
   itemResizingCallback: undefined, // callback to call for an item while it is being resized
+  // Arguments: gridsterItemComponent, event
+  itemDraggingCallback: undefined, // callback to call for an item while it is being dragged
+  // Arguments: gridsterItemComponent, collidedWithItemComponent
+  hoveringItemCallback: undefined, // callback to call for when an item is being hovered over another item
   // Arguments: gridsterItem, gridsterItemComponent
   itemResizeCallback: undefined,  // callback to call for each item when width/height changes.
   // Arguments: gridsterItem, gridsterItemComponent

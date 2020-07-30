@@ -87,7 +87,10 @@ export interface GridsterConfig {
   destroyCallback?: (gridster: GridsterComponentInterface) => void;
   gridSizeChangedCallback?: (gridster: GridsterComponentInterface) => void;
   itemChangeCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
+  itemCantFitCallback?: (itemComponent: GridsterItemComponentInterface) => void;
   itemResizingCallback?: (itemComponent: GridsterItemComponentInterface, event: MouseEvent, resizeEventScrollType: GridsterResizeEventType) => void;
+  itemDraggingCallback?: (itemComponent: GridsterItemComponentInterface, event: MouseEvent) => void;
+  hoveringItemCallback?: (itemComponent: GridsterItemComponentInterface, collidedWithItemComponent: GridsterItemComponentInterface) => void;
   itemResizeCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
   itemInitCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
   itemRemovedCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;

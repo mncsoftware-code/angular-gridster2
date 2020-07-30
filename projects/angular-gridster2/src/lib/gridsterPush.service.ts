@@ -145,6 +145,10 @@ export class GridsterPush {
         makePush = false;
         break;
       }
+      if (itemCollision.item.internalMovingOnly) {
+        makePush = false;
+        break;
+      }
       const compare = this.pushedItemsTemp.find((el: GridsterItemComponentInterface) => {
         return el['id'] === itemCollision['id'];
       });

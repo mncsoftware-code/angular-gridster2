@@ -131,6 +131,9 @@ export class GridsterDraggable {
       this.calculateItemPositionFromMousePosition.bind(this));
 
     this.calculateItemPositionFromMousePosition(e);
+    if (this.gridster.options.itemDraggingCallback) {
+      this.gridster.options.itemDraggingCallback(this.gridsterItem, e);
+    }
   }
 
   calculateItemPositionFromMousePosition(e: MouseEvent): void {
@@ -276,10 +279,16 @@ export class GridsterDraggable {
         this.gridsterItem.$item.x = this.positionXBackup;
         this.gridsterItem.$item.y = this.positionYBackup;
         if (this.gridster.$options.draggable.dropOverItems && this.collision !== true && this.collision.$item) {
+          if (this.gridster.options.hoveringItemCallback) {
+            this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision);
+          }
           this.gridster.movingItem = null;
         }
       } else {
         this.path.push({x: this.gridsterItem.$item.x, y: this.gridsterItem.$item.y});
+        if (this.collision !== false && this.gridster.options.hoveringItemCallback) {
+          this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision);
+        }
       }
       this.push.checkPushBack();
     }
