@@ -286,8 +286,13 @@ export class GridsterDraggable {
         }
       } else {
         this.path.push({x: this.gridsterItem.$item.x, y: this.gridsterItem.$item.y});
-        if (this.collision !== false && this.gridster.options.hoveringItemCallback) {
-          this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision);
+
+        if (this.gridster.options.hoveringItemCallback) {
+          if (this.collision !== false) {
+            this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision);
+          } else {
+            this.gridster.options.hoveringItemCallback(this.gridsterItem, null);
+          }
         }
       }
       this.push.checkPushBack();

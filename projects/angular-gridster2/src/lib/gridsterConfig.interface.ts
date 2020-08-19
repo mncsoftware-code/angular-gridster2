@@ -90,7 +90,7 @@ export interface GridsterConfig {
   itemCantFitCallback?: (itemComponent: GridsterItemComponentInterface) => void;
   itemResizingCallback?: (itemComponent: GridsterItemComponentInterface, event: MouseEvent, resizeEventScrollType: GridsterResizeEventType) => void;
   itemDraggingCallback?: (itemComponent: GridsterItemComponentInterface, event: MouseEvent) => void;
-  hoveringItemCallback?: (itemComponent: GridsterItemComponentInterface, collidedWithItemComponent: GridsterItemComponentInterface) => void;
+  hoveringItemCallback?: (itemComponent: GridsterItemComponentInterface, collidedWithItemComponent: GridsterItemComponentInterface | null) => void;
   itemResizeCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
   itemInitCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
   itemRemovedCallback?: (item: GridsterItem, itemComponent: GridsterItemComponentInterface) => void;
