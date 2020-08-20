@@ -20,7 +20,8 @@ export class GridsterRenderer {
       if (this.gridster.$options.keepFixedHeightInMobile) {
         renderer.setStyle(el, 'height', (item.rows * this.gridster.$options.fixedRowHeight) + 'px');
       } else {
-        renderer.setStyle(el, 'height', (item.rows * this.gridster.curWidth / item.cols) + 'px');
+        // Disabling height adjustment from original height when in mobile mode
+        //renderer.setStyle(el, 'height', (item.rows * this.gridster.curWidth / item.cols) + 'px');
       }
       if (this.gridster.$options.keepFixedWidthInMobile) {
         renderer.setStyle(el, 'width', this.gridster.$options.fixedColWidth + 'px');
