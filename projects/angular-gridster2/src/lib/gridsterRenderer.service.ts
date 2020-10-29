@@ -110,12 +110,12 @@ export class GridsterRenderer {
       removeClass2 = GridType.ScrollVertical;
       removeClass3 = GridType.Fixed;
     } else if (this.gridster.$options.gridType === GridType.FixedFit) {
-      let gridsterWidth = this.gridster.el.scrollWidth;
-      let gridsterHeight = this.gridster.el.scrollHeight;
-      if (gridsterWidth > this.gridster.el.offsetWidth && Math.floor(gridsterWidth / this.gridster.$options.fixedColWidth) === Math.floor(this.gridster.el.offsetWidth / this.gridster.$options.fixedColWidth)) {
+      let gridsterWidth = this.gridster.el.clientWidth;
+      let gridsterHeight = this.gridster.el.clientHeight;
+      if (this.gridster.el.scrollWidth > this.gridster.el.offsetWidth && Math.floor(this.gridster.el.scrollWidth / this.gridster.$options.fixedColWidth) === Math.floor(this.gridster.el.offsetWidth / this.gridster.$options.fixedColWidth)) {
           gridsterWidth = this.gridster.el.offsetWidth;
       }
-      if (gridsterHeight > this.gridster.el.offsetHeight && Math.floor(gridsterHeight / this.gridster.$options.fixedRowHeight) === Math.floor(this.gridster.el.offsetHeight / this.gridster.$options.fixedRowHeight)) {
+      if (this.gridster.el.scrollHeight > this.gridster.el.offsetHeight && Math.floor(this.gridster.el.scrollHeight / this.gridster.$options.fixedRowHeight) === Math.floor(this.gridster.el.offsetHeight / this.gridster.$options.fixedRowHeight)) {
           gridsterHeight = this.gridster.el.offsetHeight;
       }
       const margin = this.gridster.$options.ignoreMarginInRow ? 0 : this.gridster.$options.margin;
