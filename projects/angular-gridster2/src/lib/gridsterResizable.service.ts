@@ -78,7 +78,9 @@ export class GridsterResizable {
       this.gridster.options.resizable.start(this.gridsterItem.item, this.gridsterItem, e);
     }
     e.stopPropagation();
-    e.preventDefault();
+    if (e.cancelable) {
+      e.preventDefault();
+    }
     this.dragFunction = this.dragMove.bind(this);
     this.dragStopFunction = this.dragStop.bind(this);
     this.zone.runOutsideAngular(() => {
