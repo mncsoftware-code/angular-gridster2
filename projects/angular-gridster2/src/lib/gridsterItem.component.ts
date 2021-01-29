@@ -165,8 +165,7 @@ export class GridsterItemComponent implements OnDestroy, OnChanges, GridsterItem
   }
 
   canBeResized(): boolean {
-    return !this.gridster.mobile &&
-      (this.$item.resizeEnabled === undefined ? this.gridster.$options.resizable.enabled : this.$item.resizeEnabled);
+    return (this.$item.resizeEnabled === undefined ? this.gridster.$options.resizable.enabled : this.$item.resizeEnabled);
   }
 
   bringToFront(offset: number): void {
