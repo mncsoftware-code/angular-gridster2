@@ -315,6 +315,9 @@ export class GridsterDraggable {
   }
 
   dragStartDelay(e: MouseEvent2): void {
+    if (this.gridster.mobile) {
+      return;
+    }
     if (e.target.hasAttribute('class') && e.target.getAttribute('class').split(' ').indexOf('gridster-item-resizable-handler') > -1) {
       return;
     }
