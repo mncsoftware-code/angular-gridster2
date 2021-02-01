@@ -32,6 +32,7 @@ import {GridsterUtils} from './gridsterUtils.service';
 })
 export class GridsterComponent implements OnInit, OnChanges, OnDestroy, GridsterComponentInterface {
   @Input() options: GridsterConfig;
+  @Input() item: GridsterItem;
   calculateLayoutDebounce: () => void;
   movingItem: GridsterItem | null;
   previewStyle: () => void;
@@ -58,7 +59,11 @@ export class GridsterComponent implements OnInit, OnChanges, OnDestroy, Gridster
               @Inject(NgZone) public zone: NgZone) {
     this.el = el.nativeElement;
     this.$options = JSON.parse(JSON.stringify(GridsterConfigService));
-    this.calculateLayoutDebounce = GridsterUtils.debounce(this.calculateLayout.bind(this), 0);
+
+    // Disabling debounce
+    this.calculateLayoutDebounce = this.calculateLayout.bind(this);
+    //this.calculateLayoutDebounce = GridsterUtils.debounce(this.calculateLayout.bind(this), 0);
+
     this.mobile = false;
     this.curWidth = 0;
     this.curHeight = 0;
@@ -260,10 +265,12 @@ export class GridsterComponent implements OnInit, OnChanges, OnDestroy, Gridster
   }
 
   calculateLayout(): void {
+    if (this.item.isHidden) {
+      return;
+    }
     if (this.compact) {
       this.compact.checkCompact();
     }
-
     this.setGridDimensions();
     if (this.$options.outerMargin) {
       let marginWidth = -this.$options.margin;
@@ -327,7 +334,7 @@ export class GridsterComponent implements OnInit, OnChanges, OnDestroy, Gridster
       widget.resize.toggle();
     }
 
-    setTimeout(this.resize.bind(this), 100);
+    this.resize.bind(this);
   }
 
   updateGrid(): void {
