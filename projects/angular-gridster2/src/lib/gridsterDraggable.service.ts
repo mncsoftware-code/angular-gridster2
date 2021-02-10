@@ -280,7 +280,7 @@ export class GridsterDraggable {
         this.gridsterItem.$item.y = this.positionYBackup;
         if (this.gridster.$options.draggable.dropOverItems && this.collision !== true && this.collision.$item) {
           if (this.gridster.options.hoveringItemCallback) {
-            this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision);
+            this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision, this.lastMouse);
           }
           this.gridster.movingItem = null;
         }
@@ -289,9 +289,9 @@ export class GridsterDraggable {
 
         if (this.gridster.options.hoveringItemCallback) {
           if (this.collision !== false) {
-            this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision);
+            this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision, this.lastMouse);
           } else {
-            this.gridster.options.hoveringItemCallback(this.gridsterItem, null);
+            this.gridster.options.hoveringItemCallback(this.gridsterItem, null, this.lastMouse);
           }
         }
       }
