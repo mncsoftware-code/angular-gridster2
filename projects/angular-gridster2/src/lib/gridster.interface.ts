@@ -9,7 +9,7 @@ import {GridsterRenderer} from './gridsterRenderer.service';
 export abstract class GridsterComponentInterface {
   $options: GridsterConfigS;
   grid: GridsterItemComponentInterface[];
-  checkCollision: (item: GridsterItem) => GridsterItemComponentInterface | boolean;
+  checkCollision: (item: GridsterItem, multiple?: boolean) => GridsterItemComponentInterface | GridsterItemComponentInterface[] | boolean;
   checkCollisionForSwaping: (item: GridsterItem) => GridsterItemComponentInterface | boolean;
   positionXToPixels: (x: number) => number;
   pixelsToPositionX: (x: number, roundingMethod: (x: number) => number, noLimit?: boolean) => number;

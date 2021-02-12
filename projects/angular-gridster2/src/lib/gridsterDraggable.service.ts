@@ -251,17 +251,7 @@ export class GridsterDraggable {
     this.positionXBackup = this.gridsterItem.$item.x;
     this.positionYBackup = this.gridsterItem.$item.y;
     this.gridsterItem.$item.x = this.positionX;
-    /*
-    if (this.gridster.checkGridCollision(this.gridsterItem.$item)) {
-      this.gridsterItem.$item.x = this.positionXBackup;
-    }
-    */
     this.gridsterItem.$item.y = this.positionY;
-    /*
-    if (this.gridster.checkGridCollision(this.gridsterItem.$item)) {
-      this.gridsterItem.$item.y = this.positionYBackup;
-    }
-    */
     this.gridster.gridRenderer.setCellPosition(this.gridsterItem.renderer, this.gridsterItem.el, this.left, this.top);
 
     if (this.positionXBackup !== this.gridsterItem.$item.x || this.positionYBackup !== this.gridsterItem.$item.y) {
@@ -278,13 +268,16 @@ export class GridsterDraggable {
       }
       this.push.pushItems(direction, this.gridster.$options.disablePushOnDrag);
       this.swap.swapItems();
-      this.collision = this.gridster.checkCollision(this.gridsterItem.$item);
+      this.collision = <GridsterItemComponentInterface | boolean> this.gridster.checkCollision(this.gridsterItem.$item);
       if (this.collision) {
+        const collidedItems: GridsterItemComponentInterface[] = <GridsterItemComponentInterface[]>
+          this.gridster.checkCollision(this.gridsterItem.$item, true);
+
         this.gridsterItem.$item.x = this.positionXBackup;
         this.gridsterItem.$item.y = this.positionYBackup;
         if (this.gridster.$options.draggable.dropOverItems && this.collision !== true && this.collision.$item) {
           if (this.gridster.options.hoveringItemCallback) {
-            this.gridster.options.hoveringItemCallback(this.gridsterItem, this.collision, this.lastMouse);
+            this.gridster.options.hoveringItemCallback(this.gridsterItem, collidedItems, this.lastMouse);
           }
           this.gridster.movingItem = null;
         }

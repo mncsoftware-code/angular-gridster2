@@ -391,13 +391,18 @@ export class GridsterComponent implements OnInit, OnChanges, OnDestroy, Gridster
     }
   }
 
-  checkCollision(item: GridsterItem): GridsterItemComponentInterface | boolean {
-    let collision: GridsterItemComponentInterface | boolean = false;
+  checkCollision(item: GridsterItem, multiple?: boolean): GridsterItemComponentInterface | GridsterItemComponentInterface[] | boolean {
+    let collision: GridsterItemComponentInterface | GridsterItemComponentInterface[] | boolean = false;
     if (this.options.itemValidateCallback) {
       collision = !this.options.itemValidateCallback(item);
     }
     if (!collision) {
-      const c = this.findItemWithItem(item);
+      let c: GridsterItemComponentInterface | GridsterItemComponentInterface[] | boolean;
+      if (!multiple) {
+        c = this.findItemWithItem(item);
+      } else {
+        c = this.findItemsWithItem(item);
+      }
       if (c) {
         collision = c;
       }

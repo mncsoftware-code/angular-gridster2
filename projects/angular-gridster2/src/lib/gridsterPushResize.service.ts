@@ -96,7 +96,9 @@ export class GridsterPushResize {
   }
 
   private push(gridsterItem: GridsterItemComponentInterface, direction: string): boolean {
-    const gridsterItemCollision: GridsterItemComponentInterface | boolean = this.gridster.checkCollision(gridsterItem.$item);
+    const gridsterItemCollision: GridsterItemComponentInterface | boolean = <GridsterItemComponentInterface | boolean>
+      this.gridster.checkCollision(gridsterItem.$item);
+
     if (gridsterItemCollision && gridsterItemCollision !== true &&
       gridsterItemCollision !== this.gridsterItem && gridsterItemCollision.canBeResized()) {
       if (this.tryPattern[direction].call(this, gridsterItemCollision, gridsterItem, direction)) {
